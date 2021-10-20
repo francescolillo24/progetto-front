@@ -16,9 +16,9 @@ import { Student } from 'src/app/DTOs/student';
 export class StudentListComponent implements OnInit {
 
   public students: Student[] = [];
-  public student: Student = new Student();
+  // public student: Student = new Student();
 
-  constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { console.log('courseListConstructor'); }
+  constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { console.log('StudentListConstructor'); }
 
   ngOnInit(): void {
     console.log('ngOnInit StudentListComponent');

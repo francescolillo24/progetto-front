@@ -40,6 +40,12 @@ export class DidactisService {
                 catchError(this.handleError)
                 );
   }
+  getStudentsDetails(id: Number): Observable<Student>{
+    return this.http.get<Student>(`${this.studentUrl}/${id}`)
+                .pipe(tap(data => console.log(JSON.stringify(data))),
+                catchError(this.handleError)
+                );
+  }
   getAreas() : Observable<Area[]>{ 
     return this.http.get<Area[]>(`${this.courseUrl}/areas`)
             .pipe( tap(data => console.log(JSON.stringify(data))),

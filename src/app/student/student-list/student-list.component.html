@@ -18,7 +18,7 @@
           <td>{{ c.email }}</td>
           <td style="text-align: right;">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-primary" routerLink="/studentdetails">Info</button>
+              <button type="button" class="btn btn-primary" [routerLink]="['/studentdetails/', c.id]" routerLinkActive="router-link-active" >Info</button>
               <button type="button" class="btn btn-warning">Modify</button>
               <button type="button" class="btn btn-danger">Delete</button>
             </div>
