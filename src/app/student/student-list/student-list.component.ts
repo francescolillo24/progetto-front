@@ -1,4 +1,8 @@
-import { Component, TestabilityRegistry } from '@angular/core';
+import { Component, OnInit, TestabilityRegistry } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { DidactisService } from 'src/app/courses/didactis.service';
+import { Student } from 'src/app/DTOs/student';
 
 
 @Component({
@@ -9,8 +13,24 @@ import { Component, TestabilityRegistry } from '@angular/core';
 
 
 
-export class StudentListComponent {
-  students = [
+export class StudentListComponent implements OnInit {
+
+  public students: Student[] = [];
+  public student: Student = new Student();
+
+  constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { console.log('courseListConstructor'); }
+
+  ngOnInit(): void {
+    console.log('ngOnInit StudentListComponent');
+    let obsStudents: Observable<Student[]> = this.service.getStudents();
+    obsStudents.subscribe({
+      next: sts => {
+        this.students = sts;
+      },
+      error: err => console.log(err)
+    });
+  }
+/*   students = [
     {
       id: 1,
       firstname: 'Franco',
@@ -35,6 +55,6 @@ export class StudentListComponent {
       lastname:'Rossi',
       email:'mariorossi@gmail.com'
     }
-  ];
+  ]; */
 }
 

@@ -5,6 +5,7 @@ import { catchError, tap } from "rxjs/operators";
 import { CourseEdition } from 'src/app/DTOs/edition';
 import { Area } from "../DTOs/area";
 import { Course } from "../DTOs/course";
+import { Student } from "../DTOs/student";
 import { Teacher } from "../DTOs/teacher";
 
 
@@ -15,7 +16,8 @@ export class DidactisService {
   private baseUrl = 'https://localhost:44331/api/';
   private courseUrl = this.baseUrl+'course';
   private courseEditionUrl =  this.baseUrl+'courseEdition';
-  private teacherUrl = this.baseUrl+'instructor'
+  private teacherUrl = this.baseUrl+'instructor';
+  private studentUrl = this.baseUrl + 'student';
   //private http:HttpClient;
   constructor(private http: HttpClient){
     this.http = http;
@@ -31,6 +33,12 @@ export class DidactisService {
             .pipe( tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
             );
+          }
+  getStudents() : Observable<Student[]>{
+    return this.http.get<Student[]>(this.studentUrl)
+                .pipe(tap(data => console.log(JSON.stringify(data))),
+                catchError(this.handleError)
+                );
   }
   getAreas() : Observable<Area[]>{ 
     return this.http.get<Area[]>(`${this.courseUrl}/areas`)
@@ -60,35 +68,35 @@ export class DidactisService {
                     catchError(this.handleError));
   }
 
-getEditionsByCourseId(id: number):Observable<CourseEdition[]>{
-  return this.http.get<CourseEdition[]>(`${this.courseEditionUrl}/course/${id}`)
-            .pipe( tap(data => console.log(JSON.stringify(data))),
-            catchError(this.handleError)
-            );
-}
-getTeachers():Observable<Teacher[]>{
-  return this.http.get<Teacher[]>(this.teacherUrl)
-                  .pipe( tap(data => console.log(JSON.stringify(data))),
-                  catchError(this.handleError)
-                  );
-}
+  getEditionsByCourseId(id: number):Observable<CourseEdition[]>{
+    return this.http.get<CourseEdition[]>(`${this.courseEditionUrl}/course/${id}`)
+              .pipe( tap(data => console.log(JSON.stringify(data))),
+              catchError(this.handleError)
+              );
+  }
+  getTeachers():Observable<Teacher[]>{
+    return this.http.get<Teacher[]>(this.teacherUrl)
+                    .pipe( tap(data => console.log(JSON.stringify(data))),
+                    catchError(this.handleError)
+                    );
+  }
 
-createEdition(edition:CourseEdition):Observable<CourseEdition>{
-  const hs = new HttpHeaders({
-    "Content-Type": "application/json"
-  });
-  return this.http.post<CourseEdition>(this.courseEditionUrl, edition, { headers: hs })
-                  .pipe( tap(data => console.log(JSON.stringify(data))),
-                  catchError(this.handleError)
-  );
-}
+  createEdition(edition:CourseEdition):Observable<CourseEdition>{
+    const hs = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this.http.post<CourseEdition>(this.courseEditionUrl, edition, { headers: hs })
+                    .pipe( tap(data => console.log(JSON.stringify(data))),
+                    catchError(this.handleError)
+    );
+  }
 
   private handleError(errorResponse:HttpErrorResponse) : Observable<never>{ //lancia un'eccezione
     let errorMessage = '';
     if (errorResponse.error instanceof ErrorEvent) {
       errorMessage = 'errore di rete: ' + errorResponse.error.message;
     }else{
-      errorMessage = 'errore lato server: ' + errorResponse.status + '' + errorResponse.message;
+      errorMessage = 'errore lato server: ' + errorResponse.status + ' ' + errorResponse.message;
     }
     console.log(errorMessage);
     return throwError(errorMessage);
