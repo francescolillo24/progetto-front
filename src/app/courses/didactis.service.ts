@@ -51,6 +51,7 @@ export class DidactisService {
     const hs = new HttpHeaders({
       "Content-Type": "application/json"
     });
+    hs.set('Access-Control-Allow-Origin', '*');
     return this.http.put<Student>(this.studentUrl, student, { headers: hs})
                     .pipe(tap(data => console.log(JSON.stringify(data))),
                     catchError(this.handleError)

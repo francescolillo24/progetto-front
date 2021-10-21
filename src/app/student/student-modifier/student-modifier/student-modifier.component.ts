@@ -27,7 +27,7 @@ export class StudentModifierComponent implements OnInit {
   }
   calculateDateDiff(date: any): string | undefined{
     let currentDate = new Date();
-    const minDays = 6570;
+    const minDays = 6570; //giorni contenuti in 18 anni
     date = new Date(date);
     let days = Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - 
             Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))) / (1000 * 60 * 60 * 24); //returns day between currentDate and date parameter

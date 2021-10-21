@@ -6,6 +6,7 @@ import { CourseListComponent } from './courses/course-list/course-list.component
 import { EditionAddComponent } from './edition/edition-add/edition-add.component';
 import { HomeComponent } from './home/home.component';
 import { StudentDetailsListComponent } from './student/student-deatails-list/student-details-list.component';
+import { StudentDeleteComponent } from './student/student-delete/student-delete.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentModifierComponent } from './student/student-modifier/student-modifier/student-modifier.component';
 
@@ -19,12 +20,14 @@ const routes: Routes = [
 
   { path: 'addcourse/:id', component: CourseAddComponent, data: { animationState: 'Add' } },
   
-  {path: 'coursedetails/:id', component: CourseDetailsListComponent, data: { animationState: 'ThreeDetails' }},
-
-  {path: 'studentdetails/:id', component: StudentDetailsListComponent, data: { animationState: 'TwoDetails' }},
-
-  {path: 'modifystudent/:id', component: StudentModifierComponent, data: { animationState: 'TwoDetails' }},
-
+  { path: 'coursedetails/:id', component: CourseDetailsListComponent, data: { animationState: 'ThreeDetails' }},
+ 
+  { path: 'studentdetails/:id', component: StudentDetailsListComponent, data: { animationState: 'TwoDetails' }},
+ 
+  { path: 'modifystudent/:id', component: StudentModifierComponent, data: { animationState: 'TwoDetails' }},
+ 
+  { path: 'deletestudent/:id', component: StudentDeleteComponent, data: { animationState: 'TwoDetails' }},
+ 
   {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }

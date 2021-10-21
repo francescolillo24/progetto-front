@@ -27,7 +27,6 @@ import { StudentDeleteComponent } from './student/student-delete/student-delete.
     EditionAddComponent,
     StudentModifierComponent,
     StudentDeleteComponent
-
   ],
   imports: [
     BrowserModule,
