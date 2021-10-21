@@ -1,13 +1,5 @@
-<div class="container app2" id="main">
-  <div class="utilityBar d-flex justify-content-between">
-    <button class="btn btn-primary mb-3 ms-3" [routerLink]="['/addstudent', 0]" style="width: 200px;">Add</button>
-    <div class="d-flex justify-content-between">
-      <input type="text" class="form-control" style="height: 38px; width: 200px;" placeholder="Search by lastname"
-              [(ngModel)]="ricerca">
-      <button class="btn btn-success" style="height: 38px;" (click)="search()">Search</button>
-    </div>
-  </div>
-  <div class="myborder"></div>
+<div class="container app2">
+    <div class="myborder"></div>
     <table class="table table-dark table-striped table-hover" id="table" style="width: 100%; user-select: none; -moz-user-select: none;">
       <thead>
         <tr>
@@ -15,24 +7,24 @@
           <th scope="col">Firstname</th>
           <th scope="col">Lastname</th>
           <th scope="col">Email</th>
-          <th scope="col"></th>
+          <!-- <th scope="col"></th> -->
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let c of students">
+        <tr *ngFor="let c of filteredStudents">
           <td>{{ c.id }}</td>
           <td>{{ c.firstname }}</td>
           <td>{{ c.lastname }}</td>
           <td>{{ c.email }}</td>
-          <td style="text-align: right;">
+          <!-- <td style="text-align: right;">
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-primary" [routerLink]="['/studentdetails/', c.id]" routerLinkActive="router-link-active" >Info</button>
               <button type="button" class="btn btn-warning" [routerLink]="['/modifystudent/', c.id]" routerLinkActive="router-link-active">Modify</button>
               <button type="button" class="btn btn-danger" [routerLink]="['/deletestudent/', c.id]" routerLinkActive="router-link-active" >Delete</button>
             </div>
-          </td>
+          </td> -->
         </tr>
       </tbody>
     </table>
-    <div class="myborder"></div>
-  </div>
+    <div class="myborder"></div> 
+</div>

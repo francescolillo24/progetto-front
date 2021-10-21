@@ -10,6 +10,7 @@ import { StudentDetailsListComponent } from './student/student-deatails-list/stu
 import { StudentDeleteComponent } from './student/student-delete/student-delete.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentModifierComponent } from './student/student-modifier/student-modifier/student-modifier.component';
+import { StudentSearchComponent } from './student/student-search/student-search.component';
 
 const routes: Routes = [
 
@@ -29,7 +30,9 @@ const routes: Routes = [
  
   { path: 'deletestudent/:id', component: StudentDeleteComponent, data: { animationState: 'TwoDetails' }},
  
-  { path: 'addstudent/:id', component: StudentAddComponent, data: { animationState: 'Add' }},
+  { path: 'addstudent/:id', component: StudentAddComponent, data: { animationState: 'TwoDetails' }},
+
+  { path: 'searchstudent/:lastname', component: StudentSearchComponent, data: { animationState: 'TwoDetails' }},
 
   {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 

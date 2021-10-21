@@ -9,7 +9,7 @@
             <span class="input-group-text" id="basic-addon1">Firstname</span>
             <input type="text" class="form-control" aria-label="Firstname" 
                     required minlength="3" [(ngModel)]="student.firstname" #studentFirstname="ngModel" [ngModelOptions]="{standalone: true}"
-                    [ngClass]="{'is-invalid': studentFirstname.invalid || (studentFirstname.dirty && studentFirstname.touched)}">
+                    [ngClass]="{'is-invalid': (studentFirstname.dirty || studentFirstname.touched) && studentFirstname.invalid}">
             <span class="invalid-feedback">
                 <span *ngIf="studentFirstname.errors?.minlength">Il nome deve essere almeno di 3 caratteri.</span>
             </span>
@@ -20,7 +20,7 @@
             <input type="text" class="form-control" aria-label="Lastname"
                     required minlength="3" [(ngModel)]="student.lastname" #studentLastname="ngModel" 
                     [ngModelOptions]="{standalone: true}"
-                    [ngClass]="{'is-invalid': studentLastname.invalid || (studentLastname.dirty && studentLastname.touched)}">
+                    [ngClass]="{'is-invalid': (studentLastname.dirty || studentLastname.touched) && studentLastname.invalid}">
             <span class="invalid-feedback">
                 <span *ngIf="studentLastname.errors?.minlength">Il cognome deve essere almeno di 3 caratteri.</span>
             </span>
@@ -32,7 +32,7 @@
                     [(ngModel)]="student.email" #studentEmail="ngModel"
                     [ngModelOptions]="{standalone: true}"
                     required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
-                    [ngClass]="{'is-invalid': studentEmail.invalid || (studentEmail.dirty && studentEmail.touched)}">
+                    [ngClass]="{'is-invalid': (studentEmail.dirty || studentEmail.touched) && studentEmail.invalid}">
             <span class="invalid-feedback">
                 <span *ngIf="studentEmail.errors?.pattern">Inserisci una email valida.</span>
             </span>
@@ -44,7 +44,7 @@
                     [(ngModel)]="student.phoneNumber" #studentPhoneNumber="ngModel"
                     [ngModelOptions]="{standalone: true}"
                     required minlength="10" maxlength="10"
-                    [ngClass]="{'is-invalid': studentPhoneNumber.invalid || (studentPhoneNumber.dirty && studentPhoneNumber.touched)}">
+                    [ngClass]="{'is-invalid': (studentPhoneNumber.dirty || studentPhoneNumber.touched) && studentPhoneNumber.invalid}">
             <span class="invalid-feedback">
                 <span *ngIf="studentPhoneNumber.errors?.minlength">Il numero di telefono deve essere di 10 caratteri.</span>
                 <span *ngIf="studentPhoneNumber.errors?.maxlength">Il numero di telefono deve essere di 10 caratteri.</span>
@@ -57,7 +57,7 @@
                 [(ngModel)]="student.dateOfBirth" #studentDateOfBirth="ngModel"
                 [ngModelOptions]="{standalone: true}"
                 required
-                [ngClass]="{'is-invalid': studentDateOfBirth.invalid || (studentDateOfBirth.dirty && studentDateOfBirth.touched)}">
+                [ngClass]="{'is-invalid': (studentDateOfBirth.dirty || studentDateOfBirth.touched) && studentDateOfBirth.invalid}">
             <span class="invalid-feedback">
                 <span>{{calculateDateDiff(student.dateOfBirth)}}</span>
             </span>
@@ -69,7 +69,7 @@
                 [(ngModel)]="student.address" #studentAddress="ngModel"
                 [ngModelOptions]="{standalone: true}"
                 required
-                [ngClass]="{'is-invalid': studentAddress.invalid || (studentAddress.dirty && studentAddress.touched)}">
+                [ngClass]="{'is-invalid': (studentAddress.dirty || studentAddress.touched) && studentAddress.invalid}">
             <span class="invalid-feedback">
                 <span>L'inserimento dell'indirizzo è obbligatorio.</span>
             </span>
@@ -81,7 +81,7 @@
                 [(ngModel)]="student.city" #studentCity="ngModel"
                 [ngModelOptions]="{standalone: true}"
                 required
-                [ngClass]="{'is-invalid': studentCity.invalid || (studentCity.dirty && studentCity.touched)}">
+                [ngClass]="{'is-invalid': (studentCity.dirty || studentCity.touched) && studentCity.invalid}">
             <span class="invalid-feedback">
                 <span>L'inserimento della città è obbligatorio.</span>
             </span>

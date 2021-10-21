@@ -15,6 +15,7 @@ import { EditionAddComponent } from './edition/edition-add/edition-add.component
 import { StudentModifierComponent } from './student/student-modifier/student-modifier/student-modifier.component';
 import { StudentDeleteComponent } from './student/student-delete/student-delete.component';
 import { StudentAddComponent } from './student-add/student-add.component';
+import { StudentSearchComponent } from './student/student-search/student-search.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { StudentAddComponent } from './student-add/student-add.component';
     EditionAddComponent,
     StudentModifierComponent,
     StudentDeleteComponent,
-    StudentAddComponent
+    StudentAddComponent,
+    StudentSearchComponent
   ],
   imports: [
     BrowserModule,
