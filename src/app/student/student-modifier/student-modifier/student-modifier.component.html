@@ -9,32 +9,60 @@
     <form novalidate (ngSubmit)="save(modifyStudent)" #modifyStudent="ngForm">
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Firstname</span>
-            <input type="text" class="form-control" aria-label="Username" value={{student.firstname}} 
-                    minlength="3" [(ngModel)]="student.firstname" #studentfirstname="ngModel">
+            <input type="text" class="form-control" aria-label="Firstname" value={{student.firstname}} 
+                    required minlength="3" [(ngModel)]="student.firstname" #studentFirstname="ngModel" [ngModelOptions]="{standalone: true}"
+                    [ngClass]="{'is-invalid': studentFirstname.invalid || (studentFirstname.dirty && studentFirstname.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentFirstname.errors?.minlength">Il nome deve essere almeno di 3 caratteri.</span>
+            </span>
         </div>
-<!--         <span *ngIf="studentFirstname.invalid && (studentFirstname.dirty || studentFirstname.touched)" class="invalid-feedback">
-            <span *ngIf="studentFirstname.errors?.minlength">Il nome deve essere almeno di 3 caratteri.</span>
-        </span> -->
         
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Lastname</span>
-            <input type="text" class="form-control" aria-label="Username" value={{student.lastname}}>
+            <input type="text" class="form-control" aria-label="Lastname" value={{student.lastname}} 
+                    required minlength="3" [(ngModel)]="student.lastname" #studentLastname="ngModel" 
+                    [ngModelOptions]="{standalone: true}"
+                    [ngClass]="{'is-invalid': studentLastname.invalid || (studentLastname.dirty && studentLastname.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentLastname.errors?.minlength">Il cognome deve essere almeno di 3 caratteri.</span>
+            </span>
         </div>
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Email</span>
-            <input type="text" class="form-control" aria-label="Username" value={{student.email}}>
+            <input type="text" class="form-control" aria-label="Email" value={{student.email}}
+                    [(ngModel)]="student.email" #studentEmail="ngModel"
+                    [ngModelOptions]="{standalone: true}"
+                    required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    [ngClass]="{'is-invalid': studentEmail.invalid || (studentEmail.dirty && studentEmail.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentEmail.errors?.pattern">Inserisci una email valida.</span>
+            </span>
         </div>
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Phone</span>
-            <input type="text" class="form-control" aria-label="Username" value={{student.phoneNumber}}>
+            <input type="text" class="form-control" aria-label="PhoneNumber" value={{student.phoneNumber}}
+                    [(ngModel)]="student.phoneNumber" #studentPhoneNumber="ngModel"
+                    [ngModelOptions]="{standalone: true}"
+                    required minlength="10" maxlength="10"
+                    [ngClass]="{'is-invalid': studentPhoneNumber.invalid || (studentPhoneNumber.dirty && studentPhoneNumber.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentPhoneNumber.errors?.minlength">Il numero di telefono deve essere di 10 caratteri.</span>
+                <span *ngIf="studentPhoneNumber.errors?.maxlength">Il numero di telefono deve essere di 10 caratteri.</span>
+            </span>
         </div>
         <div class="input-group">
             <span class="input-group-text" id="basic-addon1">Date of birth</span>
-            <input type="check" class="form-control" aria-label="Username" value={{student.dateOfBirth}}>
+            <input type="check" class="form-control" aria-label="Date" value={{student.dateOfBirth}}
+                [(ngModel)]="student.dateOfBirth" #studentDateOfBirth="ngModel"
+                [ngModelOptions]="{standalone: true}"
+                required
+                [ngClass]="{'is-invalid': studentDateOfBirth.invalid || (studentDateOfBirth.dirty && studentDateOfBirth.touched)}">
+            <span class="invalid-feedback">
+                <span>{{calculateDateDiff(student.dateOfBirth)}}</span>
+            </span>
         </div>
         <div class="input-group">
-            <!-- <input type="submit" class="btn btn-info"value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid"> -->
-            <button class="btn btn-primary">Save</button> 
+            <button type="submit" class="btn btn-primary">Save</button> 
         </div>
     </form>
 </div> 

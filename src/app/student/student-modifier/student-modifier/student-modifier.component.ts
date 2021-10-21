@@ -14,7 +14,7 @@ export class StudentModifierComponent implements OnInit {
 
   public student: Student = new Student();
 
-  constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { console.log('StudentListConstructor'); }
+  constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { console.log('StudentModifierConstructor'); }
 
   ngOnInit(): void {
     console.log('ngOnInit StudentModifierComponent');
@@ -25,13 +25,22 @@ export class StudentModifierComponent implements OnInit {
       error: err => console.log(err)
     });
   }
+  calculateDateDiff(date: any): string | undefined{
+    let currentDate = new Date();
+    const minDays = 6570;
+    date = new Date(date);
+    let days = Math.floor((Date.UTC(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate()) - 
+            Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()))) / (1000 * 60 * 60 * 24); //returns day between currentDate and date parameter
+    if(days < minDays) return "Lo studente deve essere maggiorenne.";
+    return;
+  }
   save(form: NgForm){
-    console.log("save()");
     let obsStudent: Observable<Student> = this.service.updateStudent(this.student);
     obsStudent.subscribe({
       next: s => this.student = s,
       error: err => console.log(err)
     });
     this.router.navigate(["/students"]);
+    setTimeout(() => window.location.reload(), 100);
   }
 }

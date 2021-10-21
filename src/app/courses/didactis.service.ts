@@ -51,10 +51,15 @@ export class DidactisService {
     const hs = new HttpHeaders({
       "Content-Type": "application/json"
     });
-    return this.http.post<Student>(this.studentUrl, student, { headers: hs})
+    return this.http.put<Student>(this.studentUrl, student, { headers: hs})
                     .pipe(tap(data => console.log(JSON.stringify(data))),
                     catchError(this.handleError)
                     );
+  }
+  deleteStudent(id: Number): Observable<Student>{
+    return this.http.delete<Student>(`${this.studentUrl}/${id}`)
+                    .pipe(tap(data => console.log(JSON.stringify(data))),
+                    catchError(this.handleError));
   }
   getAreas() : Observable<Area[]>{ 
     return this.http.get<Area[]>(`${this.courseUrl}/areas`)
