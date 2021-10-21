@@ -1,0 +1,101 @@
+<div class="image_card">
+    <img src="\assets\imagines\user.png" alt="Failed img loading" class="responsive-img" style="width: 200px;">
+</div>  
+<div class="course_card">
+    <a routerLink="/students" class="previous">&laquo;</a>
+    <form novalidate (ngSubmit)="save(addStudentForm)" #addStudentForm="ngForm">
+        
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Firstname</span>
+            <input type="text" class="form-control" aria-label="Firstname" 
+                    required minlength="3" [(ngModel)]="student.firstname" #studentFirstname="ngModel" [ngModelOptions]="{standalone: true}"
+                    [ngClass]="{'is-invalid': studentFirstname.invalid || (studentFirstname.dirty && studentFirstname.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentFirstname.errors?.minlength">Il nome deve essere almeno di 3 caratteri.</span>
+            </span>
+        </div>
+        
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Lastname</span>
+            <input type="text" class="form-control" aria-label="Lastname"
+                    required minlength="3" [(ngModel)]="student.lastname" #studentLastname="ngModel" 
+                    [ngModelOptions]="{standalone: true}"
+                    [ngClass]="{'is-invalid': studentLastname.invalid || (studentLastname.dirty && studentLastname.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentLastname.errors?.minlength">Il cognome deve essere almeno di 3 caratteri.</span>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Email</span>
+            <input type="text" class="form-control" aria-label="Email"
+                    [(ngModel)]="student.email" #studentEmail="ngModel"
+                    [ngModelOptions]="{standalone: true}"
+                    required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    [ngClass]="{'is-invalid': studentEmail.invalid || (studentEmail.dirty && studentEmail.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentEmail.errors?.pattern">Inserisci una email valida.</span>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Phone Number</span>
+            <input type="text" class="form-control" aria-label="PhoneNumber"
+                    [(ngModel)]="student.phoneNumber" #studentPhoneNumber="ngModel"
+                    [ngModelOptions]="{standalone: true}"
+                    required minlength="10" maxlength="10"
+                    [ngClass]="{'is-invalid': studentPhoneNumber.invalid || (studentPhoneNumber.dirty && studentPhoneNumber.touched)}">
+            <span class="invalid-feedback">
+                <span *ngIf="studentPhoneNumber.errors?.minlength">Il numero di telefono deve essere di 10 caratteri.</span>
+                <span *ngIf="studentPhoneNumber.errors?.maxlength">Il numero di telefono deve essere di 10 caratteri.</span>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Date of birth</span>
+            <input type="check" class="form-control" aria-label="Date"
+                [(ngModel)]="student.dateOfBirth" #studentDateOfBirth="ngModel"
+                [ngModelOptions]="{standalone: true}"
+                required
+                [ngClass]="{'is-invalid': studentDateOfBirth.invalid || (studentDateOfBirth.dirty && studentDateOfBirth.touched)}">
+            <span class="invalid-feedback">
+                <span>{{calculateDateDiff(student.dateOfBirth)}}</span>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Address</span>
+            <input type="check" class="form-control" aria-label="Address"
+                [(ngModel)]="student.address" #studentAddress="ngModel"
+                [ngModelOptions]="{standalone: true}"
+                required
+                [ngClass]="{'is-invalid': studentAddress.invalid || (studentAddress.dirty && studentAddress.touched)}">
+            <span class="invalid-feedback">
+                <span>L'inserimento dell'indirizzo è obbligatorio.</span>
+            </span>
+        </div>
+
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">City</span>
+            <input type="check" class="form-control" aria-label="City"
+                [(ngModel)]="student.city" #studentCity="ngModel"
+                [ngModelOptions]="{standalone: true}"
+                required
+                [ngClass]="{'is-invalid': studentCity.invalid || (studentCity.dirty && studentCity.touched)}">
+            <span class="invalid-feedback">
+                <span>L'inserimento della città è obbligatorio.</span>
+            </span>
+        </div>
+
+        <div class="input-group" style="display: flex; align-items: center;">
+            <input type="checkbox" aria-label="IsEmployee" class="form-check-input" style="margin-right: 5px;">
+            <span class="form-check-label" id="basic-addon1">Is employee?</span>
+        </div>
+
+        <div class="input-group">
+            <button type="submit" class="btn btn-primary">Save</button> 
+        </div>
+    </form>
+</div> 
+    
+    

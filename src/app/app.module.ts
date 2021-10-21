@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditionAddComponent } from './edition/edition-add/edition-add.component';
 import { StudentModifierComponent } from './student/student-modifier/student-modifier/student-modifier.component';
 import { StudentDeleteComponent } from './student/student-delete/student-delete.component';
+import { StudentAddComponent } from './student-add/student-add.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { StudentDeleteComponent } from './student/student-delete/student-delete.
     CourseAddComponent,
     EditionAddComponent,
     StudentModifierComponent,
-    StudentDeleteComponent
+    StudentDeleteComponent,
+    StudentAddComponent
   ],
   imports: [
     BrowserModule,
