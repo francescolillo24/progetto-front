@@ -7,6 +7,7 @@ import { EditionAddComponent } from './edition/edition-add/edition-add.component
 import { HomeComponent } from './home/home.component';
 import { StudentDetailsListComponent } from './student/student-deatails-list/student-details-list.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
+import { StudentModifierComponent } from './student/student-modifier/student-modifier/student-modifier.component';
 
 const routes: Routes = [
 
@@ -21,6 +22,8 @@ const routes: Routes = [
   {path: 'coursedetails/:id', component: CourseDetailsListComponent, data: { animationState: 'ThreeDetails' }},
 
   {path: 'studentdetails/:id', component: StudentDetailsListComponent, data: { animationState: 'TwoDetails' }},
+
+  {path: 'modifystudent/:id', component: StudentModifierComponent, data: { animationState: 'TwoDetails' }},
 
   {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 

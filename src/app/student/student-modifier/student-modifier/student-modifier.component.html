@@ -1,0 +1,40 @@
+<div class="container app2" id="main">
+</div>
+
+<div class="image_card">
+    <img src="\assets\imagines\user.png" alt="Failed img loading" class="responsive-img" style="width: 200px;">
+</div>  
+<div class="course_card">
+    <a routerLink="/students" class="previous">&laquo;</a>
+    <form novalidate (ngSubmit)="save(modifyStudent)" #modifyStudent="ngForm">
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Firstname</span>
+            <input type="text" class="form-control" aria-label="Username" value={{student.firstname}} 
+                    minlength="3" [(ngModel)]="student.firstname" #studentfirstname="ngModel">
+        </div>
+<!--         <span *ngIf="studentFirstname.invalid && (studentFirstname.dirty || studentFirstname.touched)" class="invalid-feedback">
+            <span *ngIf="studentFirstname.errors?.minlength">Il nome deve essere almeno di 3 caratteri.</span>
+        </span> -->
+        
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Lastname</span>
+            <input type="text" class="form-control" aria-label="Username" value={{student.lastname}}>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Email</span>
+            <input type="text" class="form-control" aria-label="Username" value={{student.email}}>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Phone</span>
+            <input type="text" class="form-control" aria-label="Username" value={{student.phoneNumber}}>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">Date of birth</span>
+            <input type="check" class="form-control" aria-label="Username" value={{student.dateOfBirth}}>
+        </div>
+        <div class="input-group">
+            <!-- <input type="submit" class="btn btn-info"value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid"> -->
+            <button class="btn btn-primary">Save</button> 
+        </div>
+    </form>
+</div> 

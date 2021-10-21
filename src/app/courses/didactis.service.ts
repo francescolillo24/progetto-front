@@ -41,10 +41,20 @@ export class DidactisService {
                 );
   }
   getStudentsDetails(id: Number): Observable<Student>{
+    console.log("getStudentsDetails()");
     return this.http.get<Student>(`${this.studentUrl}/${id}`)
                 .pipe(tap(data => console.log(JSON.stringify(data))),
                 catchError(this.handleError)
                 );
+  }
+  updateStudent(student: Student): Observable<Student>{
+    const hs = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this.http.post<Student>(this.studentUrl, student, { headers: hs})
+                    .pipe(tap(data => console.log(JSON.stringify(data))),
+                    catchError(this.handleError)
+                    );
   }
   getAreas() : Observable<Area[]>{ 
     return this.http.get<Area[]>(`${this.courseUrl}/areas`)
@@ -64,6 +74,7 @@ export class DidactisService {
     const hs = new HttpHeaders({
       "Content-Type": "application/json"
     });
+    hs.set('Access-Control-Allow-Origin', '*');
     return this.http.put<Course>(this.courseUrl, course, { headers : hs })
                     .pipe( tap(data => console.log(JSON.stringify(data))),
                     catchError(this.handleError));

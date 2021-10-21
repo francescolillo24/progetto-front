@@ -3,10 +3,10 @@
     <table class="table table-dark table-striped table-hover" id="table" style="width: 100%; user-select: none; -moz-user-select: none;">
       <thead>
         <tr>
-          <th scope="col">id</th>
-          <th scope="col">first name</th>
-          <th scope="col">last name</th>
-          <th scope="col">email</th>
+          <th scope="col">Id</th>
+          <th scope="col">Firstname</th>
+          <th scope="col">Lastname</th>
+          <th scope="col">Email</th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -19,7 +19,7 @@
           <td style="text-align: right;">
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-primary" [routerLink]="['/studentdetails/', c.id]" routerLinkActive="router-link-active" >Info</button>
-              <button type="button" class="btn btn-warning">Modify</button>
+              <button type="button" class="btn btn-warning" [routerLink]="['/modifystudent/', c.id]" routerLinkActive="router-link-active">Modify</button>
               <button type="button" class="btn btn-danger">Delete</button>
             </div>
           </td>
