@@ -32,7 +32,7 @@ const routes: Routes = [
  
   { path: 'addstudent/:id', component: StudentAddComponent, data: { animationState: 'TwoDetails' }},
 
-  { path: 'searchstudent/:lastname', component: StudentSearchComponent, data: { animationState: 'TwoDetails' }},
+  { path: 'searchstudent/:fullname', component: StudentSearchComponent, data: { animationState: 'TwoDetails' }},
 
   {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 

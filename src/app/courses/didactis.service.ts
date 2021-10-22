@@ -86,8 +86,12 @@ export class DidactisService {
                     catchError(this.handleError));
   }
 
-  getStudentsByLastname(lastname: any): Observable<Student[]>{
-    return this.http.get<Student[]>(`${this.studentUrl}/lastname/${lastname}`)
+  getStudentsByFullName(fullname: string | null): Observable<Student[]>{
+    if(fullname != null){
+      let splitted: string[] = fullname?.split(' ');
+    }
+    console.log(`${this.studentUrl}/name?fullname=${fullname}`);
+    return this.http.get<Student[]>(`${this.studentUrl}/name?fullname=${fullname}`)
                     .pipe(tap(data => console.log(JSON.stringify(data))),
                     catchError(this.handleError));
   }

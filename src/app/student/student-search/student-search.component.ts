@@ -12,17 +12,19 @@ import { Student } from 'src/app/DTOs/student';
 export class StudentSearchComponent implements OnInit {
 
   public filteredStudents: Student[] = [];
-  public ricerca = this.route.snapshot.paramMap.get('lastname');
+  public fullname = this.route.snapshot.paramMap.get('fullname');
 
   constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { console.log('StudentSearchConstructor'); }
 
   ngOnInit(): void{
       console.log('StudentSearchComponent ngOnInit')
-      let obsStudents: Observable<Student[]> = this.service.getStudentsByLastname(this.ricerca);
-      obsStudents.subscribe({
-        next: s => this.filteredStudents = s,
-        error: err => console.log(err)
-      });
+      if(this.fullname != null){
+        let obsStudents: Observable<Student[]> = this.service.getStudentsByFullName(this.fullname);
+        obsStudents.subscribe({
+          next: s => this.filteredStudents = s,
+          error: err => console.log(err)
+        });
+      }
   }
 
 }

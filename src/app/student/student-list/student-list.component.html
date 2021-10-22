@@ -2,8 +2,10 @@
   <div class="utilityBar d-flex justify-content-between">
     <button class="btn btn-primary mb-3 ms-3" [routerLink]="['/addstudent', 0]" style="width: 200px;">Add</button>
     <div class="d-flex justify-content-between">
-      <input type="text" class="form-control" style="height: 38px; width: 200px;" placeholder="Search by lastname"
-              [(ngModel)]="ricerca">
+      <input type="text" class="form-control" style="height: 38px; width: 200px;" placeholder="Nome studente"
+              [(ngModel)]="firstname">
+      <input type="text" class="form-control" style="height: 38px; width: 200px; margin-left: 1em; margin-right: 1em;" placeholder="Cognome studente"
+              [(ngModel)]="lastname">
       <button class="btn btn-success" style="height: 38px;" (click)="search()">Search</button>
     </div>
   </div>
