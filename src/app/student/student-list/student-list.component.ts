@@ -36,15 +36,17 @@ export class StudentListComponent implements OnInit {
   search(): void{
     let fullname: string = "";
     if(this.firstname == "") {
-      fullname = this.lastname;
+      fullname = this.lastname.slice(0, 1).toUpperCase() + this.lastname.slice(1).toLowerCase();
       console.log(`${this.firstname}\t${fullname}`);
     }
     if(this.lastname == "") {
-      fullname = this.firstname;
+      fullname = this.firstname.slice(0, 1).toUpperCase() + this.firstname.slice(1).toLowerCase();
       console.log(`${this.firstname}\t${fullname}`);
     }
     else if (this.firstname != "" && this.lastname != "") {
-      fullname = this.firstname + "%20" + this.lastname;
+      fullname = (this.firstname.slice(0, 1).toUpperCase() + this.firstname.slice(1).toLowerCase())
+                  + "%20" + 
+                  (this.lastname.slice(0, 1).toUpperCase() + this.lastname.slice(1).toLowerCase());
       console.log(`${this.firstname}\t${this.lastname}\t${fullname}`);
     }
     this.router.navigate(['/searchstudent/', fullname]);
